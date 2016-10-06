@@ -40,6 +40,7 @@ import java.util.Map;
 
 import javax.inject.Inject;
 
+import acr.browser.lightning.BuildConfig;
 import acr.browser.lightning.app.BrowserApp;
 import acr.browser.lightning.constant.BookmarkPage;
 import acr.browser.lightning.constant.Constants;
@@ -56,6 +57,8 @@ import com.anthonycr.bonsai.Observable;
 import com.anthonycr.bonsai.Schedulers;
 import com.anthonycr.bonsai.Subscriber;
 import com.anthonycr.bonsai.OnSubscribe;
+
+import org.adblockplus.android.AdblockWebView;
 
 import acr.browser.lightning.utils.ProxyUtils;
 import acr.browser.lightning.utils.UrlUtils;
@@ -94,7 +97,7 @@ public class LightningView {
     };
 
     @NonNull private final LightningViewTitle mTitle;
-    @Nullable private WebView mWebView;
+    @Nullable private AdblockWebView mWebView;
     @NonNull private final UIController mUIController;
     @NonNull private final GestureDetector mGestureDetector;
     @NonNull private final Activity mActivity;
@@ -117,7 +120,9 @@ public class LightningView {
         BrowserApp.getAppComponent().inject(this);
         mActivity = activity;
         mUIController = (UIController) activity;
-        mWebView = new WebView(activity);
+        mWebView = new AdblockWebView(activity);
+        mWebView.setFilterEngine(BrowserApp.get(activity).filterEngine);
+        mWebView.setDebugMode(BuildConfig.DEBUG);
         if (Build.VERSION.SDK_INT > Build.VERSION_CODES.JELLY_BEAN) {
             mWebView.setId(View.generateViewId());
         }

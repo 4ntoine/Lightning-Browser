@@ -7,7 +7,7 @@ android {
     buildToolsVersion "24.0.1"
 
     defaultConfig {
-        minSdkVersion 14
+        minSdkVersion 17
         targetSdkVersion 24
         versionName "4.3.3"
         vectorDrawables.useSupportLibrary = true
@@ -104,4 +104,8 @@ dependencies {
     // memory leak analysis
     debugCompile 'com.squareup.leakcanary:leakcanary-android:1.4'
     releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.4'
+
+    // ad bocking
+    compile(name:'libadblockplus-android-debug', ext:'aar')
+    compile(name:'libadblockplus-android-webview-debug', ext:'aar')
 }

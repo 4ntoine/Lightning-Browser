@@ -65,6 +65,13 @@ Due to the inclusion of the netcipher library for Orbot proxy support, importing
 ````
 git submodule update --init --recursive
 ````
+Then make sure you've set ANDROID_HOME and ANDROID_NDK_ROOT environment variables or
+`sdk.dir` and `ndk.dir` variable in `local.properties` file.
+Run in 'libadblockplus-android' directory (to extract dependencies for ABP):
+````
+./ensure_dependencies.py
+````
+
 Once you run that command, the IDE should automatically import netcipher and a couple submodules in as separate projects. Than you need to set the netcipher library project as a libary of the browser project however your IDE makes you do that. Once those steps are done, the project should be all set up and ready to go. [Please read this tutorial for more information on git submodules](http://www.vogella.com/tutorials/Git/article.html#submodules)
 
 ####License

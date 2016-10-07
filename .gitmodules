@@ -8,3 +8,8 @@
 [submodule "AnimatedProgressBar"]
 	path = AnimatedProgressBar
 	url = https://github.com/anthonycr/AnimatedProgressBar.git
+[submodule "libadblockplus-android"]
+	path = libadblockplus-android
+	url = https://github.com/4ntoine/libadblockplus-android.git
+	branch = issue-4399-4503
+	ignore = dirty

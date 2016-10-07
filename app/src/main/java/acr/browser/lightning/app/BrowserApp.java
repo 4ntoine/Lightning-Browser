@@ -14,6 +14,10 @@ import android.webkit.WebView;
 import com.squareup.leakcanary.LeakCanary;
 import com.squareup.otto.Bus;
 
+import org.adblockplus.android.AdblockWebView;
+import org.adblockplus.libadblockplus.FilterEngine;
+import org.adblockplus.libadblockplus.JsEngine;
+
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
@@ -35,6 +39,9 @@ public class BrowserApp extends Application {
     @Inject Bus mBus;
     @Inject PreferenceManager mPreferenceManager;
 
+    public JsEngine jsEngine;
+    public FilterEngine filterEngine;
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -48,6 +55,10 @@ public class BrowserApp extends Application {
                 .penaltyLog()
                 .build());
         }
+
+        // init ad blocking
+        jsEngine = AdblockWebView.buildJsEngine(this, BuildConfig.DEBUG);
+        filterEngine = new FilterEngine(jsEngine); // can take some time
 
         final Thread.UncaughtExceptionHandler defaultHandler = Thread.getDefaultUncaughtExceptionHandler();
 

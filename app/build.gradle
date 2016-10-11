@@ -42,7 +42,7 @@ android {
         lightningLite {
             buildConfigField "boolean", "FULL_VERSION", "false"
             applicationId "acr.browser.barebones"
-            versionCode 90
+            versionCode 91
         }
     }
 

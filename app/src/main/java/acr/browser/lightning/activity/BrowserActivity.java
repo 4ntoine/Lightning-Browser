@@ -589,7 +589,15 @@ public abstract class BrowserActivity extends ThemableBrowserActivity implements
         }
     }
 
+    private void initializeAbpPreferences() {
+        for (int eachViewPosition = 0; eachViewPosition < mTabsManager.size(); eachViewPosition++) {
+            LightningView eachView = mTabsManager.getTabAtPosition(eachViewPosition);
+            eachView.initializeAbpSettings();
+        }
+    }
+
     private void initializePreferences() {
+        initializeAbpPreferences();
         final LightningView currentView = mTabsManager.getCurrentTab();
         mFullScreen = mPreferences.getFullScreenEnabled();
         boolean colorMode = mPreferences.getColorModeEnabled();

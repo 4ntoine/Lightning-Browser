@@ -193,6 +193,7 @@
     <string name="title_chooser">Choose a file</string>
     <string name="settings_general">General Settings</string>
     <string name="settings_display">Display Settings</string>
+    <string name="settings_abp">AdBlock Plus Settings</string>
     <string name="settings_privacy">Privacy Settings</string>
     <string name="settings_about">About</string>
     <string name="settings_about_explain">Details about version, author and license.</string>
@@ -237,6 +238,8 @@
     <string name="action_add_to_homescreen">Add to Homescreen</string>
     <string name="message_added_to_homescreen">Shortcut Added to Homescreen</string>
     <string name="action_delete_all_bookmarks">Delete all bookmarks</string>
+    <string name="abp_enable">Enable AdBlock Plus</string>
+    <string name="acceptable_ads">Acceptable Ads</string>
 
     <string name="faq">FAQ</string>
     <string name="faq_description">Frequently Asked Questions</string>

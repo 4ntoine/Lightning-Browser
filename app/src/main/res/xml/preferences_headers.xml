@@ -10,6 +10,9 @@
         android:fragment="acr.browser.lightning.fragment.DisplaySettingsFragment"
         android:title="@string/settings_display"/>
     <header
+        android:fragment="acr.browser.lightning.fragment.AbpSettingsFragment"
+        android:title="@string/settings_abp"/>
+    <header
         android:fragment="acr.browser.lightning.fragment.PrivacySettingsFragment"
         android:title="@string/settings_privacy"/>
     <header

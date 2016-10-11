@@ -153,6 +153,7 @@ public class LightningView {
         mGestureDetector = new GestureDetector(activity, new CustomGestureListener());
         mWebView.setOnTouchListener(new TouchListener());
         sDefaultUserAgent = mWebView.getSettings().getUserAgentString();
+        initializeAbpSettings();
         initializeSettings();
         initializePreferences(activity);
 
@@ -455,6 +456,11 @@ public class LightningView {
                 public void onComplete() {}
             });
 
+    }
+
+    public void initializeAbpSettings() {
+        mWebView.setAdBlockEnabled(mPreferences.getAbpEnabled());
+        mWebView.setAcceptableAdsEnabled(mPreferences.getAcceptableAdsEnabled());
     }
 
     private Observable<File> getPathObservable(final String subFolder) {

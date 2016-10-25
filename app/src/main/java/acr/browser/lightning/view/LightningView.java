@@ -58,7 +58,7 @@ import com.anthonycr.bonsai.Schedulers;
 import com.anthonycr.bonsai.Subscriber;
 import com.anthonycr.bonsai.OnSubscribe;
 
-import org.adblockplus.android.AdblockWebView;
+import org.adblockplus.libadblockplus.android.webview.AdblockWebView;
 
 import acr.browser.lightning.utils.ProxyUtils;
 import acr.browser.lightning.utils.UrlUtils;
@@ -121,8 +121,8 @@ public class LightningView {
         mActivity = activity;
         mUIController = (UIController) activity;
         mWebView = new AdblockWebView(activity);
-        mWebView.setFilterEngine(BrowserApp.get(activity).filterEngine);
-        mWebView.setDebugMode(BuildConfig.DEBUG);
+        mWebView.setAdblockEngine(BrowserApp.get(activity).getAdblockEngine());
+        mWebView.setDebugMode(!BrowserApp.isRelease());
         if (Build.VERSION.SDK_INT > Build.VERSION_CODES.JELLY_BEAN) {
             mWebView.setId(View.generateViewId());
         }
@@ -459,8 +459,8 @@ public class LightningView {
     }
 
     public void initializeAbpSettings() {
-        mWebView.setAdBlockEnabled(mPreferences.getAbpEnabled());
-        mWebView.setAcceptableAdsEnabled(mPreferences.getAcceptableAdsEnabled());
+        mWebView.setAdblockEnabled(mPreferences.getAbpEnabled());
+        mWebView.getAdblockEngine().setAcceptableAdsEnabled(mPreferences.getAcceptableAdsEnabled());
     }
 
     private Observable<File> getPathObservable(final String subFolder) {

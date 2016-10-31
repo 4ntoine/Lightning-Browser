@@ -10,7 +10,7 @@
         android:fragment="acr.browser.lightning.fragment.DisplaySettingsFragment"
         android:title="@string/settings_display"/>
     <header
-        android:fragment="acr.browser.lightning.fragment.AbpSettingsFragment"
+        android:fragment="org.adblockplus.libadblockplus.android.settings.AdblockGeneralSettingsFragment"
         android:title="@string/settings_abp"/>
     <header
         android:fragment="acr.browser.lightning.fragment.PrivacySettingsFragment"

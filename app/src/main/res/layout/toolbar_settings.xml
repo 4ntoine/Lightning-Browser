@@ -15,4 +15,9 @@
         custom:contentInsetEnd="0dp"
         custom:contentInsetStart="0dp" />
 
+    <FrameLayout
+        android:id="@+id/settings_wl_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
 </LinearLayout>

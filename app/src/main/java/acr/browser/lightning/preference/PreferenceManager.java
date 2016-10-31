@@ -64,9 +64,6 @@ public class PreferenceManager {
         public static final String INITIAL_CHECK_FOR_I2P = "checkForI2P";
 
         public static final String LEAK_CANARY = "leakCanary";
-
-        public static final String ABP_ENABLED = "abp";
-        public static final String ACCEPTABLE_ADS_ENABLED = "aa";
     }
 
     public enum Suggestion {
@@ -298,14 +295,6 @@ public class PreferenceManager {
         return mPrefs.getBoolean(Name.IDENTIFYING_HEADERS, false);
     }
 
-    public boolean getAbpEnabled() {
-        return mPrefs.getBoolean(Name.ABP_ENABLED, true);
-    }
-
-    public boolean getAcceptableAdsEnabled() {
-        return mPrefs.getBoolean(Name.ACCEPTABLE_ADS_ENABLED, true);
-    }
-
     private void putBoolean(@NonNull String name, boolean value) {
         mPrefs.edit().putBoolean(name, value).apply();
     }
@@ -507,13 +496,5 @@ public class PreferenceManager {
 
     public void setUseWideViewportEnabled(boolean enable) {
         putBoolean(Name.USE_WIDE_VIEWPORT, enable);
-    }
-
-    public void setAbpEnabled(boolean enable) {
-        putBoolean(Name.ABP_ENABLED, enable);
-    }
-
-    public void setAcceptableAdsEnabled(boolean enable) {
-        putBoolean(Name.ACCEPTABLE_ADS_ENABLED, enable);
     }
 }

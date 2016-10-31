@@ -58,6 +58,7 @@ import com.anthonycr.bonsai.Schedulers;
 import com.anthonycr.bonsai.Subscriber;
 import com.anthonycr.bonsai.OnSubscribe;
 
+import org.adblockplus.libadblockplus.android.settings.Adblock;
 import org.adblockplus.libadblockplus.android.webview.AdblockWebView;
 
 import acr.browser.lightning.utils.ProxyUtils;
@@ -120,9 +121,12 @@ public class LightningView {
         BrowserApp.getAppComponent().inject(this);
         mActivity = activity;
         mUIController = (UIController) activity;
+
+        // ad blocking
         mWebView = new AdblockWebView(activity);
-        mWebView.setAdblockEngine(BrowserApp.get(activity).getAdblockEngine());
+        mWebView.setAdblockEngine(Adblock.get().getEngine());
         mWebView.setDebugMode(!BrowserApp.isRelease());
+
         if (Build.VERSION.SDK_INT > Build.VERSION_CODES.JELLY_BEAN) {
             mWebView.setId(View.generateViewId());
         }
@@ -153,7 +157,6 @@ public class LightningView {
         mGestureDetector = new GestureDetector(activity, new CustomGestureListener());
         mWebView.setOnTouchListener(new TouchListener());
         sDefaultUserAgent = mWebView.getSettings().getUserAgentString();
-        initializeAbpSettings();
         initializeSettings();
         initializePreferences(activity);
 
@@ -456,11 +459,6 @@ public class LightningView {
                 public void onComplete() {}
             });
 
-    }
-
-    public void initializeAbpSettings() {
-        mWebView.setAdblockEnabled(mPreferences.getAbpEnabled());
-        mWebView.getAdblockEngine().setAcceptableAdsEnabled(mPreferences.getAcceptableAdsEnabled());
     }
 
     private Observable<File> getPathObservable(final String subFolder) {
@@ -862,6 +860,15 @@ public class LightningView {
             mWebView.setVisibility(View.GONE);
             mWebView.removeAllViews();
             mWebView.destroyDrawingCache();
+
+            // ad blocking
+            mWebView.dispose(new Runnable()  {
+                @Override
+                public void run() {
+                    // nothing, it's released in activity onDestroy()
+                }
+            });
+
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2) {
                 //this is causing the segfault occasionally below 4.2
                 mWebView.destroy();

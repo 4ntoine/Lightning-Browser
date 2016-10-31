@@ -15,6 +15,7 @@ import com.squareup.leakcanary.LeakCanary;
 import com.squareup.otto.Bus;
 
 import org.adblockplus.libadblockplus.android.AdblockEngine;
+import org.adblockplus.libadblockplus.android.settings.Adblock;
 
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
@@ -37,12 +38,6 @@ public class BrowserApp extends Application {
     @Inject Bus mBus;
     @Inject PreferenceManager mPreferenceManager;
 
-    private AdblockEngine adblockEngine;
-
-    public AdblockEngine getAdblockEngine() {
-        return adblockEngine;
-    }
-
     @Override
     public void onCreate() {
         super.onCreate();
@@ -58,11 +53,7 @@ public class BrowserApp extends Application {
         }
 
         // init ad blocking (can take some time)
-        adblockEngine = AdblockEngine.create(
-          this,
-          AdblockEngine.generateAppInfo(this, !isRelease()),
-          this.getCacheDir().getAbsolutePath(),
-          true);
+        Adblock.get().init(this, !isRelease(), Adblock.PREFERENCE_NAME);
 
         final Thread.UncaughtExceptionHandler defaultHandler = Thread.getDefaultUncaughtExceptionHandler();
 

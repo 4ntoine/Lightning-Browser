@@ -88,6 +88,8 @@ import com.anthonycr.progress.AnimatedProgressBar;
 import com.squareup.otto.Bus;
 import com.squareup.otto.Subscribe;
 
+import org.adblockplus.libadblockplus.android.settings.Adblock;
+
 import java.io.File;
 import java.io.IOException;
 
@@ -237,6 +239,9 @@ public abstract class BrowserActivity extends ThemableBrowserActivity implements
 
         mTabsManager = new TabsManager();
         mPresenter = new BrowserPresenter(this, isIncognito());
+
+        // ad blocking
+        Adblock.get().retain();
 
         initialize(savedInstanceState);
     }
@@ -589,15 +594,7 @@ public abstract class BrowserActivity extends ThemableBrowserActivity implements
         }
     }
 
-    private void initializeAbpPreferences() {
-        for (int eachViewPosition = 0; eachViewPosition < mTabsManager.size(); eachViewPosition++) {
-            LightningView eachView = mTabsManager.getTabAtPosition(eachViewPosition);
-            eachView.initializeAbpSettings();
-        }
-    }
-
     private void initializePreferences() {
-        initializeAbpPreferences();
         final LightningView currentView = mTabsManager.getCurrentTab();
         mFullScreen = mPreferences.getFullScreenEnabled();
         boolean colorMode = mPreferences.getColorModeEnabled();
@@ -1253,6 +1250,9 @@ public abstract class BrowserActivity extends ThemableBrowserActivity implements
             mHistoryDatabase.close();
             mHistoryDatabase = null;
         }
+
+        // ad blocking
+        Adblock.get().release();
 
         super.onDestroy();
     }

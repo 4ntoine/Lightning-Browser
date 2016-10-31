@@ -4,9 +4,11 @@ include ':bonsai'
 include ':animated-progress-bar'
 include ':libadblockplus-android'
 include ':libadblockplus-android-webview'
+include ':libadblockplus-android-settings'
 
 project(':libnetcipher').projectDir = new File(rootProject.projectDir, 'external/netcipher/libnetcipher')
 project(':bonsai').projectDir = new File(rootProject.projectDir, 'Bonsai/library')
 project(':animated-progress-bar').projectDir = new File(rootProject.projectDir, 'AnimatedProgressBar/library')
 project(':libadblockplus-android').projectDir = new File(rootProject.projectDir, 'libadblockplus-android/libadblockplus-android')
 project(':libadblockplus-android-webview').projectDir = new File(rootProject.projectDir, 'libadblockplus-android/libadblockplus-android-webview')
+project(':libadblockplus-android-settings').projectDir = new File(rootProject.projectDir, 'libadblockplus-android/libadblockplus-android-settings')

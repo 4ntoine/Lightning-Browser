@@ -108,4 +108,5 @@ dependencies {
     // ad blocking
     compile project(':libadblockplus-android')
     compile project(':libadblockplus-android-webview')
+    compile project(':libadblockplus-android-settings')
 }

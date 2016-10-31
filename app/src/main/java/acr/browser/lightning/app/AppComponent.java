@@ -11,7 +11,6 @@ import acr.browser.lightning.browser.BrowserPresenter;
 import acr.browser.lightning.constant.StartPage;
 import acr.browser.lightning.dialog.LightningDialogBuilder;
 import acr.browser.lightning.download.LightningDownloadListener;
-import acr.browser.lightning.fragment.AbpSettingsFragment;
 import acr.browser.lightning.fragment.BookmarkSettingsFragment;
 import acr.browser.lightning.fragment.BookmarksFragment;
 import acr.browser.lightning.fragment.DebugSettingsFragment;
@@ -58,8 +57,6 @@ public interface AppComponent {
     void inject(AdBlock adBlock);
 
     void inject(LightningDownloadListener listener);
-
-    void inject(AbpSettingsFragment fragment);
 
     void inject(PrivacySettingsFragment fragment);
 

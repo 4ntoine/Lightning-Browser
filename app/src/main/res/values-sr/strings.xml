@@ -126,7 +126,6 @@
     <string name="message_blocked_local">Учитавање локалног фајла је блокирано</string>
     <string name="licenses">Лиценце отвореног кôда</string>
     <string name="suggestion">Тражи</string>
-    <string name="block_ads">Блокирај рекламе</string>
     <string name="message_insecure_connection">Веза са овим сајтом није безбедна:\n%1$s\nДа наставим свеједно?</string>
     <string name="message_certificate_date_invalid">датум сертификата је неважећи</string>
     <string name="message_certificate_expired">сертификат је истекао</string>

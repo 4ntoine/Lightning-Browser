@@ -16,7 +16,6 @@ public class PreferenceManager {
 
     private static class Name {
         public static final String ADOBE_FLASH_SUPPORT = "enableflash";
-        public static final String BLOCK_ADS = "AdBlock";
         public static final String BLOCK_IMAGES = "blockimages";
         public static final String CLEAR_CACHE_EXIT = "cache";
         public static final String COOKIES = "cookies";
@@ -100,10 +99,6 @@ public class PreferenceManager {
 
     public void setBookmarkAndTabsSwapped(boolean swap) {
         putBoolean(Name.SWAP_BOOKMARKS_AND_TABS, swap);
-    }
-
-    public boolean getAdBlockEnabled() {
-        return mPrefs.getBoolean(Name.BLOCK_ADS, false);
     }
 
     public boolean getBlockImagesEnabled() {
@@ -321,10 +316,6 @@ public class PreferenceManager {
 
     public void setTextEncoding(@NonNull String encoding) {
         putString(Name.TEXT_ENCODING, encoding);
-    }
-
-    public void setAdBlockEnabled(boolean enable) {
-        putBoolean(Name.BLOCK_ADS, enable);
     }
 
     public void setBlockImagesEnabled(boolean enable) {

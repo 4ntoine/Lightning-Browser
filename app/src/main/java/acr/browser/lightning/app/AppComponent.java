@@ -18,7 +18,6 @@ import acr.browser.lightning.fragment.LightningPreferenceFragment;
 import acr.browser.lightning.fragment.PrivacySettingsFragment;
 import acr.browser.lightning.fragment.TabsFragment;
 import acr.browser.lightning.search.Suggestions;
-import acr.browser.lightning.utils.AdBlock;
 import acr.browser.lightning.utils.ProxyUtils;
 import acr.browser.lightning.view.LightningView;
 import acr.browser.lightning.view.LightningWebClient;
@@ -53,8 +52,6 @@ public interface AppComponent {
     void inject(LightningWebClient webClient);
 
     void inject(ThemableSettingsActivity activity);
-
-    void inject(AdBlock adBlock);
 
     void inject(LightningDownloadListener listener);
 

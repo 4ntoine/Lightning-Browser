@@ -109,7 +109,6 @@
     <string name="message_blocked_local">Wczytywanie lokalnego pliku zostało zablokowane</string>
     <string name="licenses">Licencje Open Source</string>
     <string name="suggestion">Wyszukaj</string>
-    <string name="block_ads">Blokuj reklamy</string>
     <string name="message_insecure_connection">Połączenie z tą stroną jest niezaufane:\n%1$s\nKontynuuować mimo wszystko?</string>
     <string name="message_certificate_date_invalid">data ważności certyfikatu jest nieprawidłowa</string>
     <string name="message_certificate_domain_mismatch">domena dla której wystawiono certyfikat jest różna od domeny odwiedzanej strony</string>

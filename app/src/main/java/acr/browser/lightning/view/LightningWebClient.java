@@ -12,7 +12,6 @@ import android.net.http.SslError;
 import android.os.Build;
 import android.os.Message;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.text.InputType;
 import android.text.method.PasswordTransformationMethod;
@@ -21,13 +20,11 @@ import android.webkit.HttpAuthHandler;
 import android.webkit.SslErrorHandler;
 import android.webkit.ValueCallback;
 import android.webkit.WebResourceRequest;
-import android.webkit.WebResourceResponse;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 
-import java.io.ByteArrayInputStream;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
@@ -40,7 +37,6 @@ import acr.browser.lightning.app.BrowserApp;
 import acr.browser.lightning.constant.Constants;
 import acr.browser.lightning.controller.UIController;
 import acr.browser.lightning.dialog.BrowserDialog;
-import acr.browser.lightning.utils.AdBlock;
 import acr.browser.lightning.utils.IntentUtils;
 import acr.browser.lightning.utils.Preconditions;
 import acr.browser.lightning.utils.ProxyUtils;
@@ -54,7 +50,6 @@ public class LightningWebClient extends WebViewClient {
     @NonNull private final IntentUtils mIntentUtils;
 
     @Inject ProxyUtils mProxyUtils;
-    @Inject AdBlock mAdBlock;
 
     LightningWebClient(@NonNull Activity activity, @NonNull LightningView lightningView) {
         BrowserApp.getAppComponent().inject(this);
@@ -63,30 +58,7 @@ public class LightningWebClient extends WebViewClient {
         mActivity = activity;
         mUIController = (UIController) activity;
         mLightningView = lightningView;
-        mAdBlock.updatePreference();
         mIntentUtils = new IntentUtils(activity);
-    }
-
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    @Override
-    public WebResourceResponse shouldInterceptRequest(WebView view, @NonNull WebResourceRequest request) {
-        if (mAdBlock.isAd(request.getUrl().toString())) {
-            ByteArrayInputStream EMPTY = new ByteArrayInputStream("".getBytes());
-            return new WebResourceResponse("text/plain", "utf-8", EMPTY);
-        }
-        return super.shouldInterceptRequest(view, request);
-    }
-
-    @Nullable
-    @SuppressWarnings("deprecation")
-    @TargetApi(Build.VERSION_CODES.KITKAT_WATCH)
-    @Override
-    public WebResourceResponse shouldInterceptRequest(WebView view, String url) {
-        if (mAdBlock.isAd(url)) {
-            ByteArrayInputStream EMPTY = new ByteArrayInputStream("".getBytes());
-            return new WebResourceResponse("text/plain", "utf-8", EMPTY);
-        }
-        return null;
     }
 
     @TargetApi(Build.VERSION_CODES.KITKAT)

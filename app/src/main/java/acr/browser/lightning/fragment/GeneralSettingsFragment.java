@@ -36,7 +36,6 @@ public class GeneralSettingsFragment extends LightningPreferenceFragment impleme
 
     private static final String SETTINGS_PROXY = "proxy";
     private static final String SETTINGS_FLASH = "cb_flash";
-    private static final String SETTINGS_ADS = "cb_ads";
     private static final String SETTINGS_IMAGES = "cb_images";
     private static final String SETTINGS_JAVASCRIPT = "cb_javascript";
     private static final String SETTINGS_COLORMODE = "cb_colormode";
@@ -73,7 +72,6 @@ public class GeneralSettingsFragment extends LightningPreferenceFragment impleme
         searchsSuggestions = findPreference(SETTINGS_SUGGESTIONS);
 
         CheckBoxPreference cbFlash = (CheckBoxPreference) findPreference(SETTINGS_FLASH);
-        CheckBoxPreference cbAds = (CheckBoxPreference) findPreference(SETTINGS_ADS);
         CheckBoxPreference cbImages = (CheckBoxPreference) findPreference(SETTINGS_IMAGES);
         CheckBoxPreference cbJsScript = (CheckBoxPreference) findPreference(SETTINGS_JAVASCRIPT);
         CheckBoxPreference cbColorMode = (CheckBoxPreference) findPreference(SETTINGS_COLORMODE);
@@ -85,7 +83,6 @@ public class GeneralSettingsFragment extends LightningPreferenceFragment impleme
         searchsSuggestions.setOnPreferenceClickListener(this);
         searchengine.setOnPreferenceClickListener(this);
         cbFlash.setOnPreferenceChangeListener(this);
-        cbAds.setOnPreferenceChangeListener(this);
         cbImages.setOnPreferenceChangeListener(this);
         cbJsScript.setOnPreferenceChangeListener(this);
         cbColorMode.setOnPreferenceChangeListener(this);
@@ -151,13 +148,11 @@ public class GeneralSettingsFragment extends LightningPreferenceFragment impleme
         boolean imagesBool = mPreferenceManager.getBlockImagesEnabled();
         boolean enableJSBool = mPreferenceManager.getJavaScriptEnabled();
 
-        cbAds.setEnabled(Constants.FULL_VERSION);
         cbFlash.setEnabled(API < Build.VERSION_CODES.KITKAT);
 
         cbImages.setChecked(imagesBool);
         cbJsScript.setChecked(enableJSBool);
         cbFlash.setChecked(flashNum > 0);
-        cbAds.setChecked(Constants.FULL_VERSION && mPreferenceManager.getAdBlockEnabled());
         cbColorMode.setChecked(mPreferenceManager.getColorModeEnabled());
     }
 
@@ -618,9 +613,6 @@ public class GeneralSettingsFragment extends LightningPreferenceFragment impleme
                         mPreferenceManager.setFlashSupport(0);
                     }
                 }
-                return true;
-            case SETTINGS_ADS:
-                mPreferenceManager.setAdBlockEnabled(checked);
                 return true;
             case SETTINGS_IMAGES:
                 mPreferenceManager.setBlockImagesEnabled(checked);

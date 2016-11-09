@@ -126,7 +126,6 @@
     <string name="message_blocked_local">Le fichier local a été bloqué au chargement</string>
     <string name="licenses">Licences open source</string>
     <string name="suggestion">Recherche</string>
-    <string name="block_ads">Bloquer les publicités</string>
     <string name="message_insecure_connection">La connexion à ce site n\'est pas sécurisée :\n%1$s\nContinuer ?</string>
     <string name="message_certificate_date_invalid">la date du certificat est incorrecte</string>
     <string name="message_certificate_expired">le certificat a expiré</string>

@@ -123,7 +123,6 @@
     <string name="message_blocked_local">Local file has been blocked from loading</string>
     <string name="licenses">Licenze Open Source</string>
     <string name="suggestion">Cerca</string>
-    <string name="block_ads">Blocca Annunci</string>
     <string name="title_form_resubmission">Reinvio Modulo</string>
     <string name="message_form_resubmission">Vuoi inviare nuovamente i dati?</string>
     <string name="message_location">\nVorrebbe usare la tua posizione</string>

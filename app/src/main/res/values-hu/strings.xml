@@ -123,7 +123,6 @@
     <string name="message_blocked_local">Helyi fájl betöltése blokkolva</string>
     <string name="licenses">Nyílt forráskódú licencek</string>
     <string name="suggestion">Keresés</string>
-    <string name="block_ads">Reklámok blokkolása</string>
     <string name="title_form_resubmission">Űrlap újraküldése</string>
     <string name="message_form_resubmission">Szeretnél újból elküldi az adatokat?</string>
     <string name="message_location">\nSzeretné használni a saját helyét?</string>

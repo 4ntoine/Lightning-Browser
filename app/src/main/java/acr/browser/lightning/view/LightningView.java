@@ -258,10 +258,12 @@ public class LightningView {
         }
 
         if (mPreferences.getRemoveIdentifyingHeadersEnabled()) {
-            mRequestHeaders.put(HEADER_REQUESTED_WITH, "");
+            // commented out as it hurts ad-blocking with Adblock Plus
+//            mRequestHeaders.put(HEADER_REQUESTED_WITH, "");
             mRequestHeaders.put(HEADER_WAP_PROFILE, "");
         } else {
-            mRequestHeaders.remove(HEADER_REQUESTED_WITH);
+            // commented out as it hurts ad-blocking with Adblock Plus
+//            mRequestHeaders.remove(HEADER_REQUESTED_WITH);
             mRequestHeaders.remove(HEADER_WAP_PROFILE);
         }
 
@@ -395,7 +397,11 @@ public class LightningView {
         }
         if (!mIsIncognitoTab) {
             settings.setDomStorageEnabled(true);
-            settings.setAppCacheEnabled(true);
+            /*
+            Using app cache is commented out as it hurts ad-blocking with Adblock Plus:
+            it removes 'Referer' header from request for some not obvious reason (bug?)
+//            settings.setAppCacheEnabled(true);
+            */
             settings.setCacheMode(WebSettings.LOAD_DEFAULT);
             settings.setDatabaseEnabled(true);
         } else {

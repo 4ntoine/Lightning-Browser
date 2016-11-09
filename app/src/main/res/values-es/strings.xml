@@ -106,7 +106,6 @@
     <string name="message_blocked_local">Se ha bloqueado la carga del archivo local</string>
     <string name="licenses">Licencias de código abierto (open source)</string>
     <string name="suggestion">Buscar</string>
-    <string name="block_ads">Bloquear anuncios</string>
     <string name="title_form_resubmission">Resubir el formulario</string>
     <string name="message_form_resubmission">¿Quieres mandar los datos de nuevo?</string>
     <string name="message_location">\n¿Quieres usar tu geolocalización?</string>

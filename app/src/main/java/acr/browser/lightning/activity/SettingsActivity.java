@@ -68,7 +68,7 @@ public class SettingsActivity extends ThemableSettingsActivity
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         // ad blocking
-        Adblock.get().retain();
+        Adblock.get().retain(false);
 
         getFragmentManager().addOnBackStackChangedListener(this);
     }

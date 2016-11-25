@@ -241,7 +241,7 @@ public abstract class BrowserActivity extends ThemableBrowserActivity implements
         mPresenter = new BrowserPresenter(this, isIncognito());
 
         // ad blocking
-        Adblock.get().retain();
+        Adblock.get().retain(true); // we use asynchronous mode to avoid current thread blocking
 
         initialize(savedInstanceState);
     }
